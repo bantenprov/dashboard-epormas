@@ -1,6 +1,8 @@
 {
     "name": "bantenprov/dashboard-epormas",
     "description": "Epormas dashboard for dashboard pimpinan application",
+    "type": "library",
+    "license": "MIT",
     "authors": [
         {
             "name": "bantenprov",
