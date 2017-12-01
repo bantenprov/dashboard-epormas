@@ -1,2 +1,2 @@
-# dashboard-epormas
+# Dashboard Epormas
 Epormas dashboard repository 
