@@ -6,7 +6,8 @@
     "authors": [
         {
             "name": "bantenprov",
-            "email": "developer.bantenprov@gmail.com"
+            "email": "developer.bantenprov@gmail.com",
+            "role": "developer"
         }
     ],
     "require": {
