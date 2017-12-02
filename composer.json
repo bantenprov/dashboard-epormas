@@ -19,7 +19,7 @@
             "src/helpers/helpers.php"
         ],
         "psr-4": {
-            "Bantenprov\\DashboardEpormas\\": "src/Bantenprov/DashboardEpormas"
+            "Bantenprov\\DashboardEpormas\\": "src"
         }
     },
     "minimum-stability": "stable"

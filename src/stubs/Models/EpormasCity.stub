@@ -1,0 +1,19 @@
+<?php
+
+namespace Bantenprov\DashboardEpormas\Models;
+
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
+
+class EpormasCity extends Model
+{
+
+    protected $table = 'epormas_city';
+    public $timestamps = true;
+
+    use SoftDeletes;
+
+    protected $dates = ['deleted_at'];
+    protected $fillable = array('name');
+
+}
