@@ -61,7 +61,7 @@ class EpormasCounterController extends Controller
         }
 
         $via = $from;
-        if($version != ''){
+        if($version != '' || $version != 'store'){
           $via .= '-'.$version;
         }
 
@@ -265,7 +265,7 @@ class EpormasCounterController extends Controller
         }
 
         $via = $from;
-        if($version != ''){
+        if($version != '' || $version != 'update'){
           $via .= '-'.$version;
         }
 

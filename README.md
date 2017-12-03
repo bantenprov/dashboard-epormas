@@ -98,7 +98,7 @@ in your `resources/assets/menu.js` add this code
     {
         name: 'Epormas',
         link: '/dashboard/epormas',
-        icon: 'ti-dark-circle'
+        icon: 'ti-angle-double-right'
     },
     ....
   ]
@@ -110,7 +110,7 @@ in your `resources/assets/menu.js` add this code
     child: [{
         name: 'list Epormas',
         link: '/epormas',
-        icon: 'ti-dark-circle'
+        icon: 'ti-angle-double-right'
     }]
 },
 ....
