@@ -25,13 +25,10 @@ $ composer require bantenprov/dashboard-epormas "1.0.0"
 $ php artisan dashboard:epormas
 $ php artisan vendor:publish --tag=views
 $ php artisan vendor:publish --tag=migrations
-$ php artisan vendor:publish --tag=seeds
 ```
 
 in your `database/seeds/DatabaseSeeder.php` add this code in `run` function
 ``` php
-Model::unguard();
-
 $this->call('EpormasCounterTableSeeder');
 $this->command->info('EpormasCounter table seeded!');
 
@@ -118,8 +115,8 @@ in your `resources/assets/menu.js` add this code
 
 ## 3. Migrate Database and npm run dev
 ``` bash
-$ php artisan migrate --seed
 $ composer dump-autoload
+$ php artisan migrate --seed
 $ npm run dev
 ```
 ## DEMO :

@@ -27,7 +27,7 @@ class EpormasCommand extends Command
      *
      * @var string
      */
-    protected $description = 'Create Controllers, Models, and Routes command for DashboardEpormas package';
+    protected $description = 'Create Controllers, Models, seeds, and Routes command for DashboardEpormas package';
 
     /**
      * The console command variable.
@@ -48,6 +48,14 @@ class EpormasCommand extends Command
            'EpormasCategory.stub',
            'EpormasCity.stub',
            'EpormasCounter.stub'
+       ]
+    ];
+
+    protected $stubsSeeds = [
+       'seeds' => [
+           'EpormasCategoryTableSeeder.stub',
+           'EpormasCityTableSeeder.stub',
+           'EpormasCounterTableSeeder.stub'
        ]
     ];
 
@@ -83,6 +91,14 @@ class EpormasCommand extends Command
         File::append(base_path('routes/api.php'),File::get(__DIR__.'/../../stubs/routes.stub'));
     }
 
+    protected function seedsViewCreate()
+    {
+        foreach($this->stubsSeeds['seeds'] as $stub)
+        {
+            File::put(base_path('database/seeds/').str_replace('stub','php',$stub),File::get(__DIR__.'/../../stubs/seeds/'.$stub));
+        }
+    }
+
     /**
      * Execute the console command.
      *
@@ -93,6 +109,7 @@ class EpormasCommand extends Command
         $this->controllerViewCreate();
         $this->modelViewCreate();
         $this->routeViewCreate();
-        $this->info('Create Controllers, Models, and Routes for DashboardEpormas package success');
+        $this->seedsViewCreate();
+        $this->info('Create Controllers, Models, seeds, and Routes for DashboardEpormas package success');
     }
 }

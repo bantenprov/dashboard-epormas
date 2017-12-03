@@ -1,6 +1,6 @@
 <?php
 
-namespace Bantenprov\DashboardEpormas\Models;
+namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -18,12 +18,12 @@ class EpormasCounter extends Model
 
     public function getCategory()
     {
-        return $this->hasOne('Dashboard\Epormas\Models\EpormasCategory', 'id', 'category_id');
+        return $this->hasOne('App\EpormasCategory', 'id', 'category_id');
     }
 
     public function getCity()
     {
-        return $this->hasOne('Dashboard\Epormas\Models\EpormasCity', 'id', 'city_id');
+        return $this->hasOne('App\EpormasCity', 'id', 'city_id');
     }
 
 }

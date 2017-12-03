@@ -32,7 +32,6 @@ class EpormasServiceProvider extends ServiceProvider
         $this->langHandle();
         $this->viewHandle();
         $this->migrationHandle();
-        $this->migrationSeedHandle();
     }
 
     /**
@@ -108,13 +107,5 @@ class EpormasServiceProvider extends ServiceProvider
         $this->publishes([
             $packageMigrationsPath => database_path('migrations')
         ], 'migrations');
-    }
-
-    protected function migrationSeedHandle()
-    {
-        $packageMigrationsPath = __DIR__.'/database/seeds';
-        $this->publishes([
-            $packageMigrationsPath => database_path('seeds')
-        ], 'seeds');
     }
 }
