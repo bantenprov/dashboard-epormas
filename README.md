@@ -22,7 +22,7 @@ $ composer require bantenprov/dashboard-epormas "1.0.0"
 
 ## 2. php artisan
 ``` bash
-$ php artisan laratrust:setup
+$ php artisan dashboard:epormas
 $ php artisan vendor:publish --tag=views
 $ php artisan vendor:publish --tag=migrations
 $ php artisan vendor:publish --tag=seeds
