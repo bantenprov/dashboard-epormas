@@ -51,7 +51,7 @@ class EpormasCityController extends Controller
         }
 
         $via = $from;
-        if($version != '' || $version != 'store'){
+        if($version != '' && $version != 'store'){
           $via .= '-'.$version;
         }
 
@@ -163,7 +163,7 @@ class EpormasCityController extends Controller
         }
 
         $via = $from;
-        if($version != '' || $version != 'update'){
+        if($version != '' && $version != 'update'){
           $via .= '-'.$version;
         }
 
