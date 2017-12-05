@@ -8,3 +8,4 @@
 // Route::get('{version}/epormas/{id}','Bantenprov\DashboardEpormas\Http\Controllers\EpormasCounterController@show');
 // Route::put('{version}/epormas/{id}','Bantenprov\DashboardEpormas\Http\Controllers\EpormasCounterController@update');
 // Route::get('epormas/{id}/edit','Bantenprov\DashboardEpormas\Http\Controllers\EpormasCounterController@edit');
+// Route::get('epormas/{id}/destroy','Bantenprov\DashboardEpormas\Http\Controllers\EpormasCounterController@destroy');

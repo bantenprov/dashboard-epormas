@@ -1,0 +1,10 @@
+Route::get('dashboard-epormas','DashboardEpormasController@epormas');
+
+//epormas
+Route::get('epormas','EpormasCounterController@index');
+Route::post('{version}/epormas','EpormasCounterController@store');
+Route::get('epormas/create','EpormasCounterController@create');
+Route::get('{version}/epormas/{id}','EpormasCounterController@show');
+Route::put('{version}/epormas/{id}','EpormasCounterController@update');
+Route::get('epormas/{id}/edit','EpormasCounterController@edit');
+Route::get('epormas/{id}/destroy','EpormasCounterController@destroy');

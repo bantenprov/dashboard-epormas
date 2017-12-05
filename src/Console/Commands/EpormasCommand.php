@@ -87,8 +87,8 @@ class EpormasCommand extends Command
 
     protected function routeViewCreate()
     {
-        File::append(base_path('routes/web.php'),File::get(__DIR__.'/../../stubs/routes.stub'));
-        File::append(base_path('routes/api.php'),File::get(__DIR__.'/../../stubs/routes.stub'));
+        File::append(base_path('routes/web.php'),File::get(__DIR__.'/../../stubs/routesweb.stub'));
+        File::append(base_path('routes/api.php'),File::get(__DIR__.'/../../stubs/routesapi.stub'));
     }
 
     protected function seedsViewCreate()
