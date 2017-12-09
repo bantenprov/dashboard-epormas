@@ -1,7 +1,8 @@
 # Dashboard Epormas
 
 [![Join the chat at https://gitter.im/dashboard-epormas/Lobby](https://badges.gitter.im/dashboard-epormas/Lobby.svg)](https://gitter.im/dashboard-epormas/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/bantenprov/dashboard-epormas/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/bantenprov/dashboard-epormas/?branch=master)
+[![Code Intelligence Status](https://scrutinizer-ci.com/g/bantenprov/dashboard-epormas/badges/code-intelligence.svg?b=master)](https://scrutinizer-ci.com/code-intelligence)
 Epormas dashboard repository
 
 ## TO DO :
