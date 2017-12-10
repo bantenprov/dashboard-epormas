@@ -1,0 +1,25 @@
+<?php namespace Bantenprov\DashboardEpormas\Http\Middleware;
+
+use Closure;
+
+/**
+ * The EpormasMiddleware class.
+ *
+ * @package Bantenprov\DashboardEpormas
+ * @author  Esza Herdi <unme.loved@gmail.com>
+ */
+class EpormasMiddleware
+{
+
+    /**
+     * Handle an incoming request.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \Closure  $next
+     * @return mixed
+     */
+    public function handle($request, Closure $next)
+    {
+        return $next($request);
+    }
+}

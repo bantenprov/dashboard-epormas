@@ -6,7 +6,8 @@
     "authors": [
         {
             "name": "bantenprov",
-            "email": "developer.bantenprov@gmail.com"
+            "email": "developer.bantenprov@gmail.com",
+            "role": "developer"
         }
     ],
     "require": {
@@ -18,7 +19,7 @@
             "src/helpers/helpers.php"
         ],
         "psr-4": {
-            "Bantenprov\\DashboardEpormas\\": "src/Bantenprov/DashboardEpormas"
+            "Bantenprov\\DashboardEpormas\\": "src"
         }
     },
     "minimum-stability": "stable"
