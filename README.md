@@ -7,8 +7,9 @@
 Epormas dashboard repository
 
 ## TO DO :
-Package for Dashboard Pimpinan
-==============================
+
+This Package is part of Dashboard Pimpinan
+==========================================
 
 ## Install
 Via composer
