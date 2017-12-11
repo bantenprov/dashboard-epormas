@@ -26,6 +26,14 @@ class EpormasCityController extends Controller
           $type = 'success';
           $message = 'Success';
           $result = EpormasCity::all();
+          return Response::json(array(
+            'error' => $error,
+            'status' => $statusCode,
+            'title' => $title,
+            'type' => $type,
+            'message' => $message,
+            'result' => $result
+          ));
       } catch (Exception $e) {
           $error = true;
           $statusCode = 404;
@@ -33,7 +41,6 @@ class EpormasCityController extends Controller
           $type = 'error';
           $message = 'Error';
           $result = 'Not Found';
-      } finally {
           return Response::json(array(
             'error' => $error,
             'status' => $statusCode,
@@ -108,6 +115,14 @@ class EpormasCityController extends Controller
             $result = EpormasCity::create([
                 'name' => $request->name
             ]);
+            return Response::json(array(
+              'error' => $error,
+              'status' => $statusCode,
+              'title' => $title,
+              'type' => $type,
+              'message' => $message,
+              'result' => $result
+            ));
         } catch (Exception $e) {
             $error = true;
             $statusCode = 404;
@@ -115,7 +130,6 @@ class EpormasCityController extends Controller
             $type = 'error';
             $message = 'Error';
             $result = 'Not Found';
-        } finally {
             return Response::json(array(
               'error' => $error,
               'status' => $statusCode,
@@ -142,6 +156,14 @@ class EpormasCityController extends Controller
             $type = 'success';
             $message = 'Success';
             $result = EpormasCity::findOrFail($id);
+            return Response::json(array(
+              'error' => $error,
+              'status' => $statusCode,
+              'title' => $title,
+              'type' => $type,
+              'message' => $message,
+              'result' => $result
+            ));
         } catch (Exception $e) {
             $error = true;
             $statusCode = 404;
@@ -149,7 +171,6 @@ class EpormasCityController extends Controller
             $type = 'error';
             $message = 'Error';
             $result = 'Not Found';
-        } finally {
             return Response::json(array(
               'error' => $error,
               'status' => $statusCode,
@@ -176,6 +197,14 @@ class EpormasCityController extends Controller
             $type = 'success';
             $message = 'Success';
             $result = EpormasCity::findOrFail($id);
+            return Response::json(array(
+              'error' => $error,
+              'status' => $statusCode,
+              'title' => $title,
+              'type' => $type,
+              'message' => $message,
+              'result' => $result
+            ));
         } catch (Exception $e) {
             $error = true;
             $statusCode = 404;
@@ -183,7 +212,6 @@ class EpormasCityController extends Controller
             $type = 'error';
             $message = 'Error';
             $result = 'Not Found';
-        } finally {
             return Response::json(array(
               'error' => $error,
               'status' => $statusCode,
@@ -253,6 +281,14 @@ class EpormasCityController extends Controller
             $result->update([
                 'name' => $request->name
             ]);
+            return Response::json(array(
+              'error' => $error,
+              'status' => $statusCode,
+              'title' => $title,
+              'type' => $type,
+              'message' => $message,
+              'result' => $result
+            ));
         } catch (Exception $e) {
             $error = true;
             $statusCode = 404;
@@ -260,7 +296,6 @@ class EpormasCityController extends Controller
             $type = 'error';
             $message = 'Error';
             $result = 'Not Found';
-        } finally {
             return Response::json(array(
               'error' => $error,
               'status' => $statusCode,
@@ -287,13 +322,19 @@ class EpormasCityController extends Controller
           $title = 'Success';
           $type = 'success';
           $message = 'Data deleted successfully';
+          return Response::json(array(
+            'error' => $error,
+            'status' => $statusCode,
+            'title' => $title,
+            'type' => $type,
+            'message' => $message
+          ));
       } catch (Exception $e) {
           $error = true;
           $statusCode = 404;
           $title = 'Error';
           $type = 'error';
           $message = 'Error';
-      } finally {
           return Response::json(array(
             'error' => $error,
             'status' => $statusCode,
