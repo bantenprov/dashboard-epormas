@@ -57,22 +57,24 @@ class EpormasCounterController extends Controller
    */
   public function create()
   {
+      $city = EpormasCity::all();
+      $category = EpormasCategory::all();
       try {
           $error = false;
           $statusCode = 200;
           $title = 'Success';
           $type = 'success';
           $message = 'Success';
-          $city = EpormasCity::all();
-          $category = EpormasCategory::all();
+          $citys = $city;
+          $categorys = $category;
       } catch (Exception $e) {
           $error = true;
           $statusCode = 404;
           $title = 'Error';
           $type = 'error';
           $message = 'Error';
-          $city = 'Not Found';
-          $category = 'Not Found';
+          $citys = 'Not Found';
+          $categorys = 'Not Found';
       } finally {
           return Response::json(array(
             'error' => $error,
@@ -80,8 +82,8 @@ class EpormasCounterController extends Controller
             'title' => $title,
             'type' => $type,
             'message' => $message,
-            'city' => $city,
-            'category' => $category
+            'city' => $citys,
+            'category' => $categorys
           ));
       }
   }
@@ -225,14 +227,16 @@ class EpormasCounterController extends Controller
    */
   public function edit($id)
   {
+        $city = EpormasCity::all();
+        $category = EpormasCategory::all();
         try {
             $error = false;
             $statusCode = 200;
             $title = 'Success';
             $type = 'success';
             $message = 'Success';
-            $city = EpormasCity::all();
-            $category = EpormasCategory::all();
+            $citys = $city;
+            $categorys = $category;
             $result = EpormasCounter::whereNull('deleted_at')
                             ->with('getCity')
                             ->with('getCategory')
@@ -244,8 +248,8 @@ class EpormasCounterController extends Controller
             $title = 'Error';
             $type = 'error';
             $message = 'Error';
-            $city = 'Not Found';
-            $category = 'Not Found';
+            $citys = 'Not Found';
+            $categorys = 'Not Found';
             $result = 'Not Found';
             $format = 'Not Found';
         } finally {
@@ -255,8 +259,8 @@ class EpormasCounterController extends Controller
               'title' => $title,
               'type' => $type,
               'message' => $message,
-              'city' => $city,
-              'category' => $category,
+              'city' => $citys,
+              'category' => $categorys,
               'result' => $result,
               'tanggal' => $format
             ));
