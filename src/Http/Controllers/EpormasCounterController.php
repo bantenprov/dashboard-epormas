@@ -57,33 +57,31 @@ class EpormasCounterController extends Controller
    */
   public function create()
   {
-      $city = EpormasCity::all();
-      $category = EpormasCategory::all();
       try {
+          $category = EpormasCategory::all();
+          $city = EpormasCity::all();
           $error = false;
           $statusCode = 200;
           $title = 'Success';
           $type = 'success';
           $message = 'Success';
-          $citys = $city;
-          $categorys = $category;
       } catch (Exception $e) {
+          $categorys = 'Not Found';
+          $citys = 'Not Found';
           $error = true;
           $statusCode = 404;
           $title = 'Error';
           $type = 'error';
           $message = 'Error';
-          $citys = 'Not Found';
-          $categorys = 'Not Found';
       } finally {
           return Response::json(array(
             'error' => $error,
             'status' => $statusCode,
             'title' => $title,
             'type' => $type,
-            'message' => $message,
-            'city' => $citys,
-            'category' => $categorys
+            'category' => $category,
+            'city' => $city,
+            'message' => $message
           ));
       }
   }
@@ -227,29 +225,32 @@ class EpormasCounterController extends Controller
    */
   public function edit($id)
   {
-        $city = EpormasCity::all();
-        $category = EpormasCategory::all();
         try {
+            $category = EpormasCategory::all();
+            $city = EpormasCity::all();
             $error = false;
             $statusCode = 200;
             $title = 'Success';
             $type = 'success';
             $message = 'Success';
-            $citys = $city;
-            $categorys = $category;
             $result = EpormasCounter::whereNull('deleted_at')
                             ->with('getCity')
                             ->with('getCategory')
                             ->find($id);
-            $format = date('Y-m-d', strtotime($result->tanggal));
+            if($result->tanggal){
+              $format = date('Y-m-d', strtotime($result->tanggal));
+            }else {
+              $format = 'Not Found';
+            }
+
         } catch (Exception $e) {
+            $category = 'Not Found';
+            $city = 'Not Found';
             $error = true;
             $statusCode = 404;
             $title = 'Error';
             $type = 'error';
             $message = 'Error';
-            $citys = 'Not Found';
-            $categorys = 'Not Found';
             $result = 'Not Found';
             $format = 'Not Found';
         } finally {
@@ -259,10 +260,10 @@ class EpormasCounterController extends Controller
               'title' => $title,
               'type' => $type,
               'message' => $message,
-              'city' => $citys,
-              'category' => $categorys,
-              'result' => $result,
-              'tanggal' => $format
+              'city' => $city,
+              'category' => $category,
+              'tanggal' => $format,
+              'result' => $result
             ));
         }
   }
