@@ -1,9 +1,15 @@
 # Dashboard Epormas
+
+[![Join the chat at https://gitter.im/dashboard-epormas/Lobby](https://badges.gitter.im/dashboard-epormas/Lobby.svg)](https://gitter.im/dashboard-epormas/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/bantenprov/dashboard-epormas/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/bantenprov/dashboard-epormas/?branch=master)
+[![Build Status](https://scrutinizer-ci.com/g/bantenprov/dashboard-epormas/badges/build.png?b=master)](https://scrutinizer-ci.com/g/bantenprov/dashboard-epormas/build-status/master)
+
 Epormas dashboard repository
 
 ## TO DO :
-Package for Dashboard Pimpinan
-==============================
+
+This Package is part of Dashboard Pimpinan
+==========================================
 
 ## Install
 Via composer
