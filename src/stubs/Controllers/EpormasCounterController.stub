@@ -123,11 +123,11 @@ class EpormasCounterController extends Controller
         }
 
         if($request->tanggal){
-          $format = date('Y-m-d', strtotime(str_replace(' ','-',$request->tanggal)));
+          $formats = date('Y-m-d', strtotime(str_replace(' ','-',$request->tanggal)));
         }else {
-          $format = '';
+          $formats = '';
         }
-
+        $format = $formats;
         $resultcek = EpormasCounter::whereNull('deleted_at')
                              ->where('tanggal','like','%'.$format.'%')
                              ->where('category_id',$request->category_id)
@@ -243,11 +243,11 @@ class EpormasCounterController extends Controller
                             ->with('getCategory')
                             ->find($id);
             if($result->tanggal){
-              $format = date('Y-m-d', strtotime($result->tanggal));
+              $formats = date('Y-m-d', strtotime($result->tanggal));
             }else {
-              $format = 'Not Found';
+              $formats = 'Not Found';
             }
-
+            $format = $formats;
         } catch (Exception $e) {
             $category = 'Not Found';
             $city = 'Not Found';
@@ -303,11 +303,11 @@ class EpormasCounterController extends Controller
         }
 
         if($request->tanggal){
-          $format = date('Y-m-d', strtotime(str_replace(' ','-',$request->tanggal)));
+          $formats = date('Y-m-d', strtotime(str_replace(' ','-',$request->tanggal)));
         }else {
-          $format = '';
+          $formats = '';
         }
-
+        $format = $formats;
         if($result->city_id != $request->city_id || $result->category_id != $request->category_id){
             $resultcek = EpormasCounter::whereNull('deleted_at')
                                  ->where('tanggal','like','%'.$format.'%')
@@ -424,4 +424,5 @@ class EpormasCounterController extends Controller
   }
 
 }
+
 ?>
