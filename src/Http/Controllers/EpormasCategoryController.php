@@ -26,14 +26,6 @@ class EpormasCategoryController extends Controller
           $type = 'success';
           $message = 'Success';
           $result = EpormasCategory::all();
-          return Response::json(array(
-            'error' => $error,
-            'status' => $statusCode,
-            'title' => $title,
-            'type' => $type,
-            'message' => $message,
-            'result' => $result
-          ));
       } catch (Exception $e) {
           $error = true;
           $statusCode = 404;
@@ -41,6 +33,7 @@ class EpormasCategoryController extends Controller
           $type = 'error';
           $message = 'Error';
           $result = 'Not Found';
+      } finally {
           return Response::json(array(
             'error' => $error,
             'status' => $statusCode,
@@ -106,39 +99,22 @@ class EpormasCategoryController extends Controller
           ));
         }
 
-        try {
-            $error = false;
-            $statusCode = 200;
-            $title = 'Success';
-            $type = 'success';
-            $message = 'Data created successfully';
-            $result = EpormasCategory::create([
-                'name' => $request->name
-            ]);
-            return Response::json(array(
-              'error' => $error,
-              'status' => $statusCode,
-              'title' => $title,
-              'type' => $type,
-              'message' => $message,
-              'result' => $result
-            ));
-        } catch (Exception $e) {
-            $error = true;
-            $statusCode = 404;
-            $title = 'Error';
-            $type = 'error';
-            $message = 'Error';
-            $result = 'Not Found';
-            return Response::json(array(
-              'error' => $error,
-              'status' => $statusCode,
-              'title' => $title,
-              'type' => $type,
-              'message' => $message,
-              'result' => $result
-            ));
-        }
+        $error = false;
+        $statusCode = 200;
+        $title = 'Success';
+        $type = 'success';
+        $message = 'Data created successfully';
+        $result = EpormasCategory::create([
+            'name' => $request->name
+        ]);
+        return Response::json(array(
+          'error' => $error,
+          'status' => $statusCode,
+          'title' => $title,
+          'type' => $type,
+          'message' => $message,
+          'result' => $result
+        ));
   }
 
   /**
@@ -156,14 +132,6 @@ class EpormasCategoryController extends Controller
             $type = 'success';
             $message = 'Success';
             $result = EpormasCategory::findOrFail($id);
-            return Response::json(array(
-              'error' => $error,
-              'status' => $statusCode,
-              'title' => $title,
-              'type' => $type,
-              'message' => $message,
-              'result' => $result
-            ));
         } catch (Exception $e) {
             $error = true;
             $statusCode = 404;
@@ -171,6 +139,7 @@ class EpormasCategoryController extends Controller
             $type = 'error';
             $message = 'Error';
             $result = 'Not Found';
+        } finally {
             return Response::json(array(
               'error' => $error,
               'status' => $statusCode,
@@ -197,14 +166,6 @@ class EpormasCategoryController extends Controller
             $type = 'success';
             $message = 'Success';
             $result = EpormasCategory::findOrFail($id);
-            return Response::json(array(
-              'error' => $error,
-              'status' => $statusCode,
-              'title' => $title,
-              'type' => $type,
-              'message' => $message,
-              'result' => $result
-            ));
         } catch (Exception $e) {
             $error = true;
             $statusCode = 404;
@@ -212,6 +173,7 @@ class EpormasCategoryController extends Controller
             $type = 'error';
             $message = 'Error';
             $result = 'Not Found';
+        } finally {
             return Response::json(array(
               'error' => $error,
               'status' => $statusCode,
@@ -271,39 +233,22 @@ class EpormasCategoryController extends Controller
           $via .= '-'.$version;
         }
 
-        try {
-            $error = false;
-            $statusCode = 200;
-            $title = 'Success';
-            $type = 'success';
-            $message = 'Data updated successfully';
-            $result->update([
-                'name' => $request->name
-            ]);
-            return Response::json(array(
-              'error' => $error,
-              'status' => $statusCode,
-              'title' => $title,
-              'type' => $type,
-              'message' => $message,
-              'result' => $result
-            ));
-        } catch (Exception $e) {
-            $error = true;
-            $statusCode = 404;
-            $title = 'Error';
-            $type = 'error';
-            $message = 'Error';
-            $result = 'Not Found';
-            return Response::json(array(
-              'error' => $error,
-              'status' => $statusCode,
-              'title' => $title,
-              'type' => $type,
-              'message' => $message,
-              'result' => $result
-            ));
-        }
+        $error = false;
+        $statusCode = 200;
+        $title = 'Success';
+        $type = 'success';
+        $message = 'Data updated successfully';
+        $result->update([
+            'name' => $request->name
+        ]);
+        return Response::json(array(
+          'error' => $error,
+          'status' => $statusCode,
+          'title' => $title,
+          'type' => $type,
+          'message' => $message,
+          'result' => $result
+        ));
   }
 
   /**
@@ -314,34 +259,19 @@ class EpormasCategoryController extends Controller
    */
   public function destroy($id)
   {
-      try {
-          EpormasCategory::find($id)->delete();
-          $error = false;
-          $statusCode = 200;
-          $title = 'Success';
-          $type = 'success';
-          $message = 'Data deleted successfully';
-          return Response::json(array(
-            'error' => $error,
-            'status' => $statusCode,
-            'title' => $title,
-            'type' => $type,
-            'message' => $message
-          ));
-      } catch (Exception $e) {
-          $error = true;
-          $statusCode = 404;
-          $title = 'Error';
-          $type = 'error';
-          $message = 'Error';
-          return Response::json(array(
-            'error' => $error,
-            'status' => $statusCode,
-            'title' => $title,
-            'type' => $type,
-            'message' => $message
-          ));
-      }
+      EpormasCategory::find($id)->delete();
+      $error = false;
+      $statusCode = 200;
+      $title = 'Success';
+      $type = 'success';
+      $message = 'Data deleted successfully';
+      return Response::json(array(
+        'error' => $error,
+        'status' => $statusCode,
+        'title' => $title,
+        'type' => $type,
+        'message' => $message
+      ));
   }
 
 }
