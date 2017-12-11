@@ -122,12 +122,7 @@ class EpormasCounterController extends Controller
           ));
         }
 
-        if($request->tanggal){
-          $formats = date('Y-m-d', strtotime(str_replace(' ','-',$request->tanggal)));
-        }else {
-          $formats = '';
-        }
-        $format = $formats;
+        $format = date('Y-m-d', strtotime(str_replace(' ','-',$request->tanggal)));
         $resultcek = EpormasCounter::whereNull('deleted_at')
                              ->where('tanggal','like','%'.$format.'%')
                              ->where('category_id',$request->category_id)
@@ -243,11 +238,11 @@ class EpormasCounterController extends Controller
                             ->with('getCategory')
                             ->find($id);
             if($result->tanggal){
-              $formats = date('Y-m-d', strtotime($result->tanggal));
+              $format = date('Y-m-d', strtotime($result->tanggal));
             }else {
-              $formats = 'Not Found';
+              $format = 'Not Found';
             }
-            $format = $formats;
+
         } catch (Exception $e) {
             $category = 'Not Found';
             $city = 'Not Found';
@@ -265,9 +260,9 @@ class EpormasCounterController extends Controller
               'title' => $title,
               'type' => $type,
               'message' => $message,
-              'tanggal' => $format,
               'city' => $city,
               'category' => $category,
+              'tanggal' => $format,
               'result' => $result
             ));
         }
@@ -302,12 +297,7 @@ class EpormasCounterController extends Controller
           ));
         }
 
-        if($request->tanggal){
-          $formats = date('Y-m-d', strtotime(str_replace(' ','-',$request->tanggal)));
-        }else {
-          $formats = '';
-        }
-        $format = $formats;
+        $format = date('Y-m-d', strtotime(str_replace(' ','-',$request->tanggal)));
         if($result->city_id != $request->city_id || $result->category_id != $request->category_id){
             $resultcek = EpormasCounter::whereNull('deleted_at')
                                  ->where('tanggal','like','%'.$format.'%')
