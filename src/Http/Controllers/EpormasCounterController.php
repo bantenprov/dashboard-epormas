@@ -244,10 +244,10 @@ class EpormasCounterController extends Controller
             $title = 'Error';
             $type = 'error';
             $message = 'Error';
-            $result = 'Not Found';
             $city = 'Not Found';
-            $format = 'Not Found';
             $category = 'Not Found';
+            $result = 'Not Found';
+            $format = 'Not Found';
         } finally {
             return Response::json(array(
               'error' => $error,
@@ -255,10 +255,10 @@ class EpormasCounterController extends Controller
               'title' => $title,
               'type' => $type,
               'message' => $message,
-              'result' => $result,
               'city' => $city,
-              'tanggal' => $format,
-              'category' => $category
+              'category' => $category,
+              'result' => $result,
+              'tanggal' => $format
             ));
         }
   }
