@@ -276,5 +276,3 @@ class EpormasCityController extends Controller
   }
 
 }
-
-?>

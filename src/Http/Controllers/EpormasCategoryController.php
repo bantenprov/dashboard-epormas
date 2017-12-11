@@ -275,5 +275,3 @@ class EpormasCategoryController extends Controller
   }
 
 }
-
-?>
