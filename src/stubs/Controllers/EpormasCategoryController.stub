@@ -88,22 +88,22 @@ class EpormasCategoryController extends Controller
 
         $validator = Validator::make($request->all(), $rules);
         if ($validator->fails()) {
-          return response()->json([
+          return Response::json(array(
               'title' => 'Error',
               'type'  => 'error',
               'message' => $validator->errors()->all()
-          ]);
+          ));
         }
 
         $data = EpormasCategory::whereNull('deleted_at')
                         ->where('name', $request->name)
                         ->count();
         if($data > 0){
-          return response()->json([
+          return Response::json(array(
               'title' => 'Error',
               'type'  => 'error',
               'message' => 'Data has already been taken.'
-          ]);
+          ));
         }
 
         try {
@@ -239,11 +239,10 @@ class EpormasCategoryController extends Controller
 
         $validator = Validator::make($request->all(), $rules);
         if ($validator->fails()) {
-          return response()->json([
-              'title' => 'Error',
+          return Response::json(array(
               'type'  => 'error',
               'message' => $validator->errors()->all()
-          ]);
+          ));
         }
 
         if($request->name != $result->name){
@@ -251,11 +250,11 @@ class EpormasCategoryController extends Controller
                           ->where('name', $request->name)
                           ->count();
           if($data > 0){
-            return response()->json([
+            return Response::json(array(
                 'title' => 'Error',
                 'type'  => 'error',
                 'message' => 'Data has already been taken.'
-            ]);
+            ));
           }
         }
 

@@ -88,22 +88,22 @@ class EpormasCityController extends Controller
 
         $validator = Validator::make($request->all(), $rules);
         if ($validator->fails()) {
-          return response()->json([
+          return Response::json(array(
               'title' => 'Error',
               'type'  => 'error',
               'message' => $validator->errors()->all()
-          ]);
+          ));
         }
 
         $data = EpormasCity::whereNull('deleted_at')
                         ->where('name', $request->name)
                         ->count();
         if($data > 0){
-          return response()->json([
+          return Response::json(array(
               'title' => 'Error',
               'type'  => 'error',
               'message' => 'Data has already been taken.'
-          ]);
+          ));
         }
 
         try {
@@ -239,11 +239,11 @@ class EpormasCityController extends Controller
 
         $validator = Validator::make($request->all(), $rules);
         if ($validator->fails()) {
-          return response()->json([
+          return Response::json(array(
               'title' => 'Error',
               'type'  => 'error',
               'message' => $validator->errors()->all()
-          ]);
+          ));
         }
 
         if($request->name != $result->name){
@@ -251,11 +251,11 @@ class EpormasCityController extends Controller
                           ->where('name', $request->name)
                           ->count();
           if($data > 0){
-            return response()->json([
+            return Response::json(array(
                 'title' => 'Error',
                 'type'  => 'error',
                 'message' => 'Data has already been taken.'
-            ]);
+            ));
           }
         }
 

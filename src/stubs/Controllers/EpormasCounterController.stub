@@ -130,11 +130,11 @@ class EpormasCounterController extends Controller
 
         $validator = Validator::make($request->all(), $rules);
         if ($validator->fails()) {
-          return response()->json([
+          return Response::json(array(
               'title' => 'Error',
               'type'  => 'error',
               'message' => $validator->errors()->all()
-          ]);
+          ));
         }
 
         $format = date('Y-m-d', strtotime(str_replace(' ','-',$request->tanggal)));
@@ -146,11 +146,11 @@ class EpormasCounterController extends Controller
                              ->orderBy('bulan')
                              ->count();
         if($resultcek > 0){
-          return response()->json([
+          return Response::json(array(
               'title' => 'Error',
               'type'  => 'error',
               'message' => 'Data has already been taken.'
-          ]);
+          ));
         }
 
         $date = explode("-",$format);
@@ -163,11 +163,11 @@ class EpormasCounterController extends Controller
                        ->orderBy('bulan')
                        ->count();
         if($data > 0){
-          return response()->json([
+          return Response::json(array(
               'title' => 'Error',
               'type'  => 'error',
               'message' => 'Data has already been taken.'
-          ]);
+          ));
         }
 
         try {
@@ -334,11 +334,11 @@ class EpormasCounterController extends Controller
 
         $validator = Validator::make($request->all(), $rules);
         if ($validator->fails()) {
-          return response()->json([
+          return Response::json(array(
               'title' => 'Error',
               'type'  => 'error',
               'message' => $validator->errors()->all()
-          ]);
+          ));
         }
 
         $format = date('Y-m-d', strtotime(str_replace(' ','-',$request->tanggal)));
@@ -351,11 +351,11 @@ class EpormasCounterController extends Controller
                                  ->orderBy('bulan')
                                  ->count();
             if($resultcek > 0){
-              return response()->json([
+              return Response::json(array(
                   'title' => 'Error',
                   'type'  => 'error',
                   'message' => 'Data has already been taken.'
-              ]);
+              ));
             }
         }
 
@@ -370,11 +370,11 @@ class EpormasCounterController extends Controller
                                  ->orderBy('bulan')
                                  ->count();
             if($resultcek > 0){
-              return response()->json([
+              return Response::json(array(
                   'title' => 'Error',
                   'type'  => 'error',
                   'message' => 'Data has already been taken.'
-              ]);
+              ));
             }
 
             $data = EpormasCounter::whereNull('deleted_at')
@@ -386,11 +386,11 @@ class EpormasCounterController extends Controller
                            ->orderBy('bulan')
                            ->count();
             if($data > 0){
-              return response()->json([
+              return Response::json(array(
                   'title' => 'Error',
                   'type'  => 'error',
                   'message' => 'Data has already been taken.'
-              ]);
+              ));
             }
         }
 
