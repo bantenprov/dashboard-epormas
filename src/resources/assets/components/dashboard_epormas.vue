@@ -269,7 +269,7 @@ export default {
         var settime = settimes*12;
         var time = settimes/8;
         var datachartepormascounter = [];
-        axios.get("/api/dashboard-epormas").then(response => {
+        axios.get("/dashboard-epormas").then(response => {
           //area_chart epormascounter
           datachartepormascounter = response.data.datachartepormascounter;
           if (datachartepormascounter.datatahun.tahun.length > 0) {

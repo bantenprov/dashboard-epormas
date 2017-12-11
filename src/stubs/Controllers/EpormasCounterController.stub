@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Input;
 use App\EpormasCounter;
 use App\EpormasCategory;
 use App\EpormasCity;
-use Validator, Image, Session, File, Response;
+use Validator, Image, Session, File, Response, Redirect, Exception;
 
 class EpormasCounterController extends Controller
 {
@@ -21,13 +21,33 @@ class EpormasCounterController extends Controller
    */
   public function index()
   {
-        $result = EpormasCounter::whereNull('deleted_at')
-                        ->with('getCity')
-                        ->with('getCategory')
-                        ->get();
-        return response()->json([
+      try {
+          $error = false;
+          $statusCode = 200;
+          $title = 'Success';
+          $type = 'success';
+          $message = 'Success';
+          $result = EpormasCounter::whereNull('deleted_at')
+                          ->with('getCity')
+                          ->with('getCategory')
+                          ->get();
+      } catch (Exception $e) {
+          $error = true;
+          $statusCode = 404;
+          $title = 'Error';
+          $type = 'error';
+          $message = 'Error';
+          $result = 'Not Found';
+      } finally {
+          return Response::json(array(
+            'error' => $error,
+            'status' => $statusCode,
+            'title' => $title,
+            'type' => $type,
+            'message' => $message,
             'result' => $result
-        ]);
+          ));
+      }
   }
 
   /**
@@ -37,12 +57,33 @@ class EpormasCounterController extends Controller
    */
   public function create()
   {
-        $city = EpormasCity::all();
-        $category = EpormasCategory::all();
-        return response()->json([
+      try {
+          $error = false;
+          $statusCode = 200;
+          $title = 'Success';
+          $type = 'success';
+          $message = 'Success';
+          $city = EpormasCity::all();
+          $category = EpormasCategory::all();
+      } catch (Exception $e) {
+          $error = true;
+          $statusCode = 404;
+          $title = 'Error';
+          $type = 'error';
+          $message = 'Error';
+          $city = 'Not Found';
+          $category = 'Not Found';
+      } finally {
+          return Response::json(array(
+            'error' => $error,
+            'status' => $statusCode,
+            'title' => $title,
+            'type' => $type,
+            'message' => $message,
             'city' => $city,
-            'category' => $category,
-        ]);
+            'category' => $category
+          ));
+      }
   }
 
   /**
@@ -114,22 +155,39 @@ class EpormasCounterController extends Controller
           ]);
         }
 
-        $result = EpormasCounter::create([
-            'count' => $request->count,
-            'category_id' => $request->category_id,
-            'city_id' => $request->city_id,
-            'tahun' => $date[0],
-            'bulan' => $date[1],
-            'tanggal' => $format,
-            'user_id' => $request->user_id,
-            'via' => $via
-        ]);
-
-        return response()->json([
-            'title' => 'Success',
-            'type'  => 'success',
-            'message' => 'Data created successfully'
-        ]);
+        try {
+            $error = false;
+            $statusCode = 200;
+            $title = 'Success';
+            $type = 'success';
+            $message = 'Data created successfully';
+            $result = EpormasCounter::create([
+                'count' => $request->count,
+                'category_id' => $request->category_id,
+                'city_id' => $request->city_id,
+                'tahun' => $date[0],
+                'bulan' => $date[1],
+                'tanggal' => $format,
+                'user_id' => $request->user_id,
+                'via' => $via
+            ]);
+        } catch (Exception $e) {
+            $error = true;
+            $statusCode = 404;
+            $title = 'Error';
+            $type = 'error';
+            $message = 'Error';
+            $result = 'Not Found';
+        } finally {
+            return Response::json(array(
+              'error' => $error,
+              'status' => $statusCode,
+              'title' => $title,
+              'type' => $type,
+              'message' => $message,
+              'result' => $result
+            ));
+        }
   }
 
   /**
@@ -140,13 +198,33 @@ class EpormasCounterController extends Controller
    */
   public function show($version='', $id)
   {
-        $result = EpormasCounter::whereNull('deleted_at')
-                        ->with('getCity')
-                        ->with('getCategory')
-                        ->find($id);
-        return response()->json([
-            'result' => $result
-        ]);
+        try {
+            $error = false;
+            $statusCode = 200;
+            $title = 'Success';
+            $type = 'success';
+            $message = 'Success';
+            $result = EpormasCounter::whereNull('deleted_at')
+                            ->with('getCity')
+                            ->with('getCategory')
+                            ->find($id);
+        } catch (Exception $e) {
+            $error = true;
+            $statusCode = 404;
+            $title = 'Error';
+            $type = 'error';
+            $message = 'Error';
+            $result = 'Not Found';
+        } finally {
+            return Response::json(array(
+              'error' => $error,
+              'status' => $statusCode,
+              'title' => $title,
+              'type' => $type,
+              'message' => $message,
+              'result' => $result
+            ));
+        }
   }
 
   /**
@@ -157,19 +235,42 @@ class EpormasCounterController extends Controller
    */
   public function edit($id)
   {
-        $city = EpormasCity::all();
-        $category = EpormasCategory::all();
-        $result = EpormasCounter::whereNull('deleted_at')
-                        ->with('getCity')
-                        ->with('getCategory')
-                        ->find($id);
-        $format = date('Y-m-d', strtotime($result->tanggal));
-        return response()->json([
-            'result' => $result,
-            'city' => $city,
-            'tanggal' => $format,
-            'category' => $category,
-        ]);
+        try {
+            $error = false;
+            $statusCode = 200;
+            $title = 'Success';
+            $type = 'success';
+            $message = 'Success';
+            $city = EpormasCity::all();
+            $category = EpormasCategory::all();
+            $result = EpormasCounter::whereNull('deleted_at')
+                            ->with('getCity')
+                            ->with('getCategory')
+                            ->find($id);
+            $format = date('Y-m-d', strtotime($result->tanggal));
+        } catch (Exception $e) {
+            $error = true;
+            $statusCode = 404;
+            $title = 'Error';
+            $type = 'error';
+            $message = 'Error';
+            $result = 'Not Found';
+            $city = 'Not Found';
+            $format = 'Not Found';
+            $category = 'Not Found';
+        } finally {
+            return Response::json(array(
+              'error' => $error,
+              'status' => $statusCode,
+              'title' => $title,
+              'type' => $type,
+              'message' => $message,
+              'result' => $result,
+              'city' => $city,
+              'tanggal' => $format,
+              'category' => $category,
+            ));
+        }
   }
 
   /**
@@ -269,22 +370,39 @@ class EpormasCounterController extends Controller
           $via .= '-'.$version;
         }
 
-        $result->update([
-            'count' => $request->count,
-            'category_id' => $request->category_id,
-            'city_id' => $request->city_id,
-            'tahun' => $date[0],
-            'bulan' => $date[1],
-            'tanggal' => $format,
-            'user_id' => $user_id,
-            'via' => $via
-        ]);
-
-        return response()->json([
-            'title' => 'Success',
-            'type'  => 'success',
-            'message' => 'Data updated successfully'
-        ]);
+        try {
+            $error = false;
+            $statusCode = 200;
+            $title = 'Success';
+            $type = 'success';
+            $message = 'Data updated successfully';
+            $result->update([
+                'count' => $request->count,
+                'category_id' => $request->category_id,
+                'city_id' => $request->city_id,
+                'tahun' => $date[0],
+                'bulan' => $date[1],
+                'tanggal' => $format,
+                'user_id' => $user_id,
+                'via' => $via
+            ]);
+        } catch (Exception $e) {
+            $error = true;
+            $statusCode = 404;
+            $title = 'Error';
+            $type = 'error';
+            $message = 'Error';
+            $result = 'Not Found';
+        } finally {
+            return Response::json(array(
+              'error' => $error,
+              'status' => $statusCode,
+              'title' => $title,
+              'type' => $type,
+              'message' => $message,
+              'result' => $result
+            ));
+        }
   }
 
   /**
@@ -295,10 +413,28 @@ class EpormasCounterController extends Controller
    */
   public function destroy($id)
   {
-        EpormasCounter::find($id)->delete();
-        return response()->json([
-            'message' => 'Data deleted successfully'
-        ]);
+      try {
+          EpormasCounter::find($id)->delete();
+          $error = false;
+          $statusCode = 200;
+          $title = 'Success';
+          $type = 'success';
+          $message = 'Data deleted successfully';
+      } catch (Exception $e) {
+          $error = true;
+          $statusCode = 404;
+          $title = 'Error';
+          $type = 'error';
+          $message = 'Error';
+      } finally {
+          return Response::json(array(
+            'error' => $error,
+            'status' => $statusCode,
+            'title' => $title,
+            'type' => $type,
+            'message' => $message
+          ));
+      }
   }
 
 }

@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
 use Bantenprov\DashboardEpormas\Models\EpormasCity;
-use Validator, Image, Session, File, Response;
+use Validator, Image, Session, File, Response, Redirect, Exception;
 
 class EpormasCityController extends Controller
 {
@@ -19,10 +19,30 @@ class EpormasCityController extends Controller
    */
   public function index()
   {
-        $result = EpormasCity::all();
-        return response()->json([
+      try {
+          $error = false;
+          $statusCode = 200;
+          $title = 'Success';
+          $type = 'success';
+          $message = 'Success';
+          $result = EpormasCity::all();
+      } catch (Exception $e) {
+          $error = true;
+          $statusCode = 404;
+          $title = 'Error';
+          $type = 'error';
+          $message = 'Error';
+          $result = 'Not Found';
+      } finally {
+          return Response::json(array(
+            'error' => $error,
+            'status' => $statusCode,
+            'title' => $title,
+            'type' => $type,
+            'message' => $message,
             'result' => $result
-        ]);
+          ));
+      }
   }
 
   /**
@@ -79,15 +99,32 @@ class EpormasCityController extends Controller
           ]);
         }
 
-        $result = EpormasCity::create([
-            'name' => $request->name
-        ]);
-
-        return response()->json([
-            'title' => 'Success',
-            'type'  => 'success',
-            'message' => 'Data created successfully'
-        ]);
+        try {
+            $error = false;
+            $statusCode = 200;
+            $title = 'Success';
+            $type = 'success';
+            $message = 'Data created successfully';
+            $result = EpormasCity::create([
+                'name' => $request->name
+            ]);
+        } catch (Exception $e) {
+            $error = true;
+            $statusCode = 404;
+            $title = 'Error';
+            $type = 'error';
+            $message = 'Error';
+            $result = 'Not Found';
+        } finally {
+            return Response::json(array(
+              'error' => $error,
+              'status' => $statusCode,
+              'title' => $title,
+              'type' => $type,
+              'message' => $message,
+              'result' => $result
+            ));
+        }
   }
 
   /**
@@ -98,10 +135,30 @@ class EpormasCityController extends Controller
    */
   public function show($version='', $id)
   {
-        $result = EpormasCity::find($id);
-        return response()->json([
-            'result' => $result
-        ]);
+        try {
+            $error = false;
+            $statusCode = 200;
+            $title = 'Success';
+            $type = 'success';
+            $message = 'Success';
+            $result = EpormasCity::findOrFail($id);
+        } catch (Exception $e) {
+            $error = true;
+            $statusCode = 404;
+            $title = 'Error';
+            $type = 'error';
+            $message = 'Error';
+            $result = 'Not Found';
+        } finally {
+            return Response::json(array(
+              'error' => $error,
+              'status' => $statusCode,
+              'title' => $title,
+              'type' => $type,
+              'message' => $message,
+              'result' => $result
+            ));
+        }
   }
 
   /**
@@ -112,10 +169,30 @@ class EpormasCityController extends Controller
    */
   public function edit($id)
   {
-        $result = EpormasCity::find($id);
-        return response()->json([
-            'result' => $result
-        ]);
+        try {
+            $error = false;
+            $statusCode = 200;
+            $title = 'Success';
+            $type = 'success';
+            $message = 'Success';
+            $result = EpormasCity::findOrFail($id);
+        } catch (Exception $e) {
+            $error = true;
+            $statusCode = 404;
+            $title = 'Error';
+            $type = 'error';
+            $message = 'Error';
+            $result = 'Not Found';
+        } finally {
+            return Response::json(array(
+              'error' => $error,
+              'status' => $statusCode,
+              'title' => $title,
+              'type' => $type,
+              'message' => $message,
+              'result' => $result
+            ));
+        }
   }
 
   /**
@@ -167,15 +244,32 @@ class EpormasCityController extends Controller
           $via .= '-'.$version;
         }
 
-        $result->update([
-            'name' => $request->name
-        ]);
-
-        return response()->json([
-            'title' => 'Success',
-            'type'  => 'success',
-            'message' => 'Data updated successfully'
-        ]);
+        try {
+            $error = false;
+            $statusCode = 200;
+            $title = 'Success';
+            $type = 'success';
+            $message = 'Data updated successfully';
+            $result->update([
+                'name' => $request->name
+            ]);
+        } catch (Exception $e) {
+            $error = true;
+            $statusCode = 404;
+            $title = 'Error';
+            $type = 'error';
+            $message = 'Error';
+            $result = 'Not Found';
+        } finally {
+            return Response::json(array(
+              'error' => $error,
+              'status' => $statusCode,
+              'title' => $title,
+              'type' => $type,
+              'message' => $message,
+              'result' => $result
+            ));
+        }
   }
 
   /**
@@ -186,10 +280,28 @@ class EpormasCityController extends Controller
    */
   public function destroy($id)
   {
-        EpormasCity::find($id)->delete();
-        return response()->json([
-            'message' => 'Data deleted successfully'
-        ]);
+      try {
+          EpormasCity::find($id)->delete();
+          $error = false;
+          $statusCode = 200;
+          $title = 'Success';
+          $type = 'success';
+          $message = 'Data deleted successfully';
+      } catch (Exception $e) {
+          $error = true;
+          $statusCode = 404;
+          $title = 'Error';
+          $type = 'error';
+          $message = 'Error';
+      } finally {
+          return Response::json(array(
+            'error' => $error,
+            'status' => $statusCode,
+            'title' => $title,
+            'type' => $type,
+            'message' => $message
+          ));
+      }
   }
 
 }

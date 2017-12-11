@@ -124,7 +124,7 @@ export default {
         },
         form_reset() {
             var id = this.$route.params.id;
-            axios.get("/api/epormas/"+id+"/edit").then(response => {
+            axios.get("/epormas/"+id+"/edit").then(response => {
                     this.model = {
                         tanggal: response.data.tanggal,
                         category_id: response.data.result.category_id,
@@ -140,7 +140,7 @@ export default {
     },
     mounted: function() {
         var id = this.$route.params.id;
-        axios.get("/api/epormas/"+id+"/edit").then(response => {
+        axios.get("/epormas/"+id+"/edit").then(response => {
                 this.category = response.data.category;
                 this.city = response.data.city;
                 this.model = {

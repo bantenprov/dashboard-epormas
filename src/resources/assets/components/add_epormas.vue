@@ -135,7 +135,7 @@ export default {
         }
     },
     mounted: function() {
-        axios.get("/api/epormas/create").then(response => {
+        axios.get("/epormas/create").then(response => {
             this.category = response.data.category;
             this.city = response.data.city;
         })

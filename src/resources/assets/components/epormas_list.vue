@@ -88,7 +88,7 @@ export default {
         }
     },
     mounted() {
-        axios.get("/api/epormas").then(response => {
+        axios.get("/epormas").then(response => {
             this.tableData = response.data.result;
             this.tableData.forEach((item, index) => {
                 this.$set(item, "action", "<a class='btn btn-warning btn-sm' href='#/epormas/" + item.id + "/edit'><i class='leftmenu_icon ti-pencil-alt' class='icon'></i> Edit</a> <a class='btn btn-danger btn-sm' onclick='return confirm(\"Are Youu Sure?\")' href='#/epormas/" + item.id + "/destroy'><i class='leftmenu_icon ti-close' class='icon'></i> Delete</a>");

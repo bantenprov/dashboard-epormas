@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Input;
 use App\EpormasCounter;
 use App\EpormasCategory;
 use App\EpormasCity;
-use Validator, Image, Session, File, Response;
+use Validator, Image, Session, File, Response, Redirect, Exception;
 
 class DashboardEpormasController extends Controller
 {
@@ -92,10 +92,10 @@ class DashboardEpormasController extends Controller
       $datagrafikepormascounter = ['count'=>$grafikcountepormascounter, 'bulan'=>$grafikbulanepormascounter, 'namabulan'=>$namaBulan, 'namabulans'=>$namaBulans, 'kategori'=>$category, 'kota'=>$city, 'total'=>$grafiktotalepormascounter, 'datatahun'=>['tahun'=>$datagrafiktahunepormascounter, 'count'=>$datagrafikcountepormascounter, 'totaldata'=>$datagrafiktotalepormascounter], 'datapie'=>$grafikpieepormascounter, 'seriesdata'=>[$chartgrafikcountepormascounter]];
       //end Pegawai Epormas
 
-        return response()->json([
+        return Response::json(array(
             //Jumlah Penduduk
             'datachartepormascounter' => $datagrafikepormascounter
             //end Jumlah Penduduk
-        ]);
+        ));
     }
 }
