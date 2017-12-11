@@ -66,8 +66,8 @@ class EpormasCounterController extends Controller
           $type = 'success';
           $message = 'Success';
       } catch (Exception $e) {
-          $categorys = 'Not Found';
-          $citys = 'Not Found';
+          $category = 'Not Found';
+          $city = 'Not Found';
           $error = true;
           $statusCode = 404;
           $title = 'Error';
