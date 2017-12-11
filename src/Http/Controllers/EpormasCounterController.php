@@ -265,9 +265,9 @@ class EpormasCounterController extends Controller
               'title' => $title,
               'type' => $type,
               'message' => $message,
+              'tanggal' => $format,
               'city' => $city,
               'category' => $category,
-              'tanggal' => $format,
               'result' => $result
             ));
         }
