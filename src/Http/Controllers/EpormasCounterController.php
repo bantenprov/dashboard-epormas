@@ -31,6 +31,14 @@ class EpormasCounterController extends Controller
                           ->with('getCity')
                           ->with('getCategory')
                           ->get();
+          return Response::json(array(
+            'error' => $error,
+            'status' => $statusCode,
+            'title' => $title,
+            'type' => $type,
+            'message' => $message,
+            'result' => $result
+          ));
       } catch (Exception $e) {
           $error = true;
           $statusCode = 404;
@@ -38,7 +46,6 @@ class EpormasCounterController extends Controller
           $type = 'error';
           $message = 'Error';
           $result = 'Not Found';
-      } finally {
           return Response::json(array(
             'error' => $error,
             'status' => $statusCode,
@@ -65,6 +72,15 @@ class EpormasCounterController extends Controller
           $message = 'Success';
           $city = EpormasCity::all();
           $category = EpormasCategory::all();
+          return Response::json(array(
+            'error' => $error,
+            'status' => $statusCode,
+            'title' => $title,
+            'type' => $type,
+            'message' => $message,
+            'city' => $city,
+            'category' => $category
+          ));
       } catch (Exception $e) {
           $error = true;
           $statusCode = 404;
@@ -73,7 +89,6 @@ class EpormasCounterController extends Controller
           $message = 'Error';
           $city = 'Not Found';
           $category = 'Not Found';
-      } finally {
           return Response::json(array(
             'error' => $error,
             'status' => $statusCode,
@@ -171,6 +186,14 @@ class EpormasCounterController extends Controller
                 'user_id' => $request->user_id,
                 'via' => $via
             ]);
+            return Response::json(array(
+              'error' => $error,
+              'status' => $statusCode,
+              'title' => $title,
+              'type' => $type,
+              'message' => $message,
+              'result' => $result
+            ));
         } catch (Exception $e) {
             $error = true;
             $statusCode = 404;
@@ -178,7 +201,6 @@ class EpormasCounterController extends Controller
             $type = 'error';
             $message = 'Error';
             $result = 'Not Found';
-        } finally {
             return Response::json(array(
               'error' => $error,
               'status' => $statusCode,
@@ -208,6 +230,14 @@ class EpormasCounterController extends Controller
                             ->with('getCity')
                             ->with('getCategory')
                             ->find($id);
+            return Response::json(array(
+              'error' => $error,
+              'status' => $statusCode,
+              'title' => $title,
+              'type' => $type,
+              'message' => $message,
+              'result' => $result
+            ));
         } catch (Exception $e) {
             $error = true;
             $statusCode = 404;
@@ -215,7 +245,6 @@ class EpormasCounterController extends Controller
             $type = 'error';
             $message = 'Error';
             $result = 'Not Found';
-        } finally {
             return Response::json(array(
               'error' => $error,
               'status' => $statusCode,
@@ -248,6 +277,17 @@ class EpormasCounterController extends Controller
                             ->with('getCategory')
                             ->find($id);
             $format = date('Y-m-d', strtotime($result->tanggal));
+            return Response::json(array(
+              'error' => $error,
+              'status' => $statusCode,
+              'title' => $title,
+              'type' => $type,
+              'message' => $message,
+              'result' => $result,
+              'city' => $city,
+              'tanggal' => $format,
+              'category' => $category
+            ));
         } catch (Exception $e) {
             $error = true;
             $statusCode = 404;
@@ -258,7 +298,6 @@ class EpormasCounterController extends Controller
             $city = 'Not Found';
             $format = 'Not Found';
             $category = 'Not Found';
-        } finally {
             return Response::json(array(
               'error' => $error,
               'status' => $statusCode,
@@ -268,7 +307,7 @@ class EpormasCounterController extends Controller
               'result' => $result,
               'city' => $city,
               'tanggal' => $format,
-              'category' => $category,
+              'category' => $category
             ));
         }
   }
@@ -386,6 +425,14 @@ class EpormasCounterController extends Controller
                 'user_id' => $user_id,
                 'via' => $via
             ]);
+            return Response::json(array(
+              'error' => $error,
+              'status' => $statusCode,
+              'title' => $title,
+              'type' => $type,
+              'message' => $message,
+              'result' => $result
+            ));
         } catch (Exception $e) {
             $error = true;
             $statusCode = 404;
@@ -393,7 +440,6 @@ class EpormasCounterController extends Controller
             $type = 'error';
             $message = 'Error';
             $result = 'Not Found';
-        } finally {
             return Response::json(array(
               'error' => $error,
               'status' => $statusCode,
@@ -420,13 +466,19 @@ class EpormasCounterController extends Controller
           $title = 'Success';
           $type = 'success';
           $message = 'Data deleted successfully';
+          return Response::json(array(
+            'error' => $error,
+            'status' => $statusCode,
+            'title' => $title,
+            'type' => $type,
+            'message' => $message
+          ));
       } catch (Exception $e) {
           $error = true;
           $statusCode = 404;
           $title = 'Error';
           $type = 'error';
           $message = 'Error';
-      } finally {
           return Response::json(array(
             'error' => $error,
             'status' => $statusCode,
