@@ -14,7 +14,7 @@ This Package is part of Dashboard Pimpinan
 ## Install
 Via composer
 ``` bash
-$ composer require bantenprov/dashboard-epormas:1.0.0
+$ composer require bantenprov/dashboard-epormas:2.0.*
 ```
 
 ## 1. In your config/app.php add for laravel 5.4:
