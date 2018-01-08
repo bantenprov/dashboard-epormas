@@ -12,6 +12,10 @@ This Package is part of Dashboard Pimpinan
 ==========================================
 
 ## Install
+```
+composer create-project bantenprov/tanara:dev-dev
+```
+
 Via composer
 ``` bash
 $ composer require bantenprov/dashboard-epormas:2.0.*
