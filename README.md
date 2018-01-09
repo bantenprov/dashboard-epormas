@@ -18,7 +18,7 @@ composer create-project bantenprov/tanara:dev-dev
 
 Via composer
 ``` bash
-$ composer require bantenprov/dashboard-epormas:2.0.*
+$ composer require bantenprov/dashboard-epormas:2.0.x-dev
 ```
 
 ## 1. In your config/app.php add for laravel 5.4:
