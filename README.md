@@ -44,6 +44,7 @@ $this->command->info('EpormasCity table seeded!');
 $this->call('EpormasCategoryTableSeeder');
 $this->command->info('EpormasCategory table seeded!');
 ```
+#### routes.js
 
 in your `resources/assets/routes.js` add this code in `const routes`
 ``` php
@@ -89,6 +90,7 @@ const routes = [{
 ]},
 ....
 ```
+#### menu.js
 
 in your `resources/assets/menu.js` add this code
 ``` php
