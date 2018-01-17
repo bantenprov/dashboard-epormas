@@ -10,7 +10,7 @@ Epormas dashboard repository
 
 This Package is part of Dashboard Pimpinan
 ==========================================
-
+(test_command)
 ## Install
 ```
 composer create-project bantenprov/tanara:dev-dev
